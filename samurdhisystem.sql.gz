@@ -1,0 +1,201 @@
+-- phpMyAdmin SQL Dump
+-- version 5.1.3
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: May 27, 2022 at 08:16 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.5
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `samurdhisystem`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `id` int(10) NOT NULL,
+  `username` varchar(20) NOT NULL,
+  `password` varchar(20) NOT NULL,
+  `email` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id`, `username`, `password`, `email`) VALUES
+(1, 'admin', 'admin', 'admin@abc.com');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bank`
+--
+
+CREATE TABLE `bank` (
+  `id` int(10) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `branch` varchar(50) NOT NULL,
+  `acno` int(100) NOT NULL,
+  `actype` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `bank`
+--
+
+INSERT INTO `bank` (`id`, `name`, `branch`, `acno`, `actype`) VALUES
+(1, 'Anula Wijesekara', 'Marathugoda', 30001, 'Members\' deposits'),
+(2, 'Nimal Kularatna', 'Poojapitiya', 30002, 'Compulsory savings'),
+(3, 'Chamila Ekanayake', 'Marathugoda', 30003, 'Diriya Maatha'),
+(4, 'Upali Weerakoon', 'Poojapitiya', 30004, 'Members\' shares'),
+(5, 'Nadeeka Thennakoon', 'Marathugoda', 30005, 'Group deposits'),
+(7, 'Srimali Perera', 'Marathugoda', 30007, 'Kekulu'),
+(6, 'Ashoka Rathnayake', 'Poojapitiya', 30006, 'Diriya Maatha'),
+(8, 'Gayan Dissanayake', 'Poojapitiya', 30008, 'Members\' deposits'),
+(9, 'Sandya Peiris', 'Poojapitiya', 30009, 'Sisurekha'),
+(10, 'Anoma Dias', 'Medawala', 30010, 'Compulsory savings');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `beneficiaries`
+--
+
+CREATE TABLE `beneficiaries` (
+  `id` int(10) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `dob` date NOT NULL,
+  `gender` varchar(10) NOT NULL,
+  `NIC` varchar(15) NOT NULL,
+  `address` varchar(100) NOT NULL,
+  `contact` int(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `beneficiaries`
+--
+
+INSERT INTO `beneficiaries` (`id`, `name`, `dob`, `gender`, `NIC`, `address`, `contact`) VALUES
+(1, 'Anula Wijesekara', '1967-03-21', 'Female', '671100338v', '65, Poojapitiya', 811111330),
+(2, 'Nimal Kularatna', '1972-11-02', 'Male', '722355610v', '11, poojapitiya', 834123352),
+(3, 'Chamila Ekanayake', '1980-01-28', 'Female', '806139725v', '16, poojapitiya', 812540640),
+(4, 'Upali Weerakoon', '1965-08-10', 'Male', '653789981v', '37, Poojapitiya', 734005001),
+(5, 'Nadeeka Thennakoon', '1983-04-14', 'Male', '835432113v', '45, Poojapitiya', 759222113),
+(6, 'Ashoka Rathnayake', '1975-10-08', 'Female', '759658321v', '101, Poojapitiya', 769981354),
+(7, 'Srimali Perera', '1980-02-23', 'Female', '808009993v', '50, Poojapitiya', 889542131),
+(8, 'Gayan Dissanayake', '1975-11-11', 'Male', '752585953v', '31, Poojapitiya', 723456712),
+(9, 'Sandya Peiris', '1968-07-21', 'Female', '682145491v', '100, Poojapitiya', 825243322),
+(10, 'Anoma Dias', '1975-06-15', 'Female', '758009445v', '88, Poojapitiya', 833345561);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `fundtransfer`
+--
+
+CREATE TABLE `fundtransfer` (
+  `acno` int(11) NOT NULL,
+  `amount` double NOT NULL,
+  `date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `fundtransfer`
+--
+
+INSERT INTO `fundtransfer` (`acno`, `amount`, `date`) VALUES
+(30001, 1000, '2022-05-16'),
+(30002, 1000, '2022-05-19'),
+(30003, 1000, '2022-05-11'),
+(30007, 1000, '2022-05-17'),
+(30005, 1500, '2022-05-20'),
+(40001, 500, '2022-05-27');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `loan`
+--
+
+CREATE TABLE `loan` (
+  `id` int(10) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `loanprogram` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `loan`
+--
+
+INSERT INTO `loan` (`id`, `name`, `loanprogram`) VALUES
+(1, 'Anula Wijesekara', 'Self Employment'),
+(4, 'Upali Weerakoon', 'Cultivation'),
+(3, 'Chamila Ekanayake', 'Isuru');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `social`
+--
+
+CREATE TABLE `social` (
+  `id` int(10) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `category` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `social`
+--
+
+INSERT INTO `social` (`id`, `name`, `category`) VALUES
+(7, 'Srimali Perera', 'Hospitalized'),
+(8, 'Gayan Dissanayake', 'Hospitalized'),
+(4, 'Upali Weerakoon', 'Death');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `beneficiaries`
+--
+ALTER TABLE `beneficiaries`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
